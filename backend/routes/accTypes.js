@@ -14,12 +14,13 @@ router.get('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  const type = await AccType.findByIdAndDelete(req.params.id);
+  const type = await AccType.findOneAndDelete({_id: req.params.id});
   if(!type){
     res.status(404);
     return;
   }
-  res.status(204);
+
+  res.status(204).send();
 }); 
 
 router.post('/', async (req, res) => {

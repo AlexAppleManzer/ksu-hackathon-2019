@@ -11,13 +11,11 @@ const listingModel = new Schema({
     accType: { type: String },
     amount: { type: Number }
   },
-  accType: { type: String },
   acceptedAccTypes: [
     { type: String }
   ],
   userId: { type: String },
   description: { type: String },
-  
 });
 
-module.exports = mongoose.model('User', listingModel);
+module.exports = mongoose.model('Listing', listingModel);
