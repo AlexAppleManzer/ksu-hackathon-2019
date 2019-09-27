@@ -6,9 +6,10 @@ import { ToolbarModule } from './toolbar/toolbar.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { SearchListingsModule } from './search-listings/search-listings.module';
 import { HomePageComponent } from './home/home-page/home-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { getAuthServiceConfigs } from './configs';
 import { AuthServiceConfig } from 'angular-6-social-login';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthServiceConfig } from 'angular-6-social-login';
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
