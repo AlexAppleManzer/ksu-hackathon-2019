@@ -27,23 +27,7 @@
     
 }
 
-.displayWant{
-    padding: 5px;
-    background-color: black;
-    width:50%;
-    float: left;
-    color:white;
-}
-.displayHave{
-    padding: 10px;
-    background-color: black;
-    color: white;
-}
-.combine{
-    display: flex;
-    color:violet;
-    
-}
 button{
-    float: right;
+    float:right;
+    color:white;
 }

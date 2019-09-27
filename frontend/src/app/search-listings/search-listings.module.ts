@@ -10,7 +10,7 @@ import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { ListingDetailComponent } from './listing-detail/listing-detail.component';
 import { CreateListingComponent } from './create-listing/create-listing.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatSelectModule} from '@angular/material/select';
 
 
 const routes: Routes = [
@@ -28,7 +28,8 @@ const routes: Routes = [
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSelectModule
   ],
   exports: [
   ]
