@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-
+import { BackendServiceService } from 'src/app/services/backend-service.service';
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
@@ -15,8 +15,11 @@ export class SearchPageComponent implements OnInit {
   myControl = new FormControl();
   options: string[] = ['Steam', 'Itunes', 'Walmart'];
   filteredOptions: Observable<string[]>;
-
+  constructor(private backendService: BackendServiceService) { }
   ngOnInit() {
+    this.backendService.getAccTypes().subscribe(
+      results => this.options = results
+    );
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
