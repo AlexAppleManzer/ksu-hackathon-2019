@@ -21,6 +21,24 @@ export class BackendServiceService {
     );
   }
 
+  listAccounts() : Observable<any> {
+    return this.http.get(this.endpoint + '/users/accounts').pipe(
+      tap( // Log the result or error
+        data => console.log(data),
+        error => console.error(error)
+      )
+    );
+  }
+
+  postAccount() : Observable<any> {
+    return this.http.post(this.endpoint + '/users/accounts', {}).pipe(
+      tap( // Log the result or error
+        data => console.log(data),
+        error => console.error(error)
+      )
+    );
+  }
+
   getAccTypes() : Observable<any> {
     return this.http.get(this.endpoint + '/accTypes').pipe(
       tap( // Log the result or error

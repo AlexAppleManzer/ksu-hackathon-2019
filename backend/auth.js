@@ -22,7 +22,7 @@ function googleAuth(app) {
 
       const ticket = await client.verifyIdToken({
         idToken: req.token,
-        audience: config.jwt.clientId,
+        audience: config.google.clientId,
       });
 
       const userid = ticket.getPayload().sub;
@@ -33,6 +33,7 @@ function googleAuth(app) {
         });
       }
       user.save();
+      console.log(user);
       done(null, user);
     },
   ));

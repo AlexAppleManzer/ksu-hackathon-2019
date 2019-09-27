@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 //     res.status(400);
 //     return;
 //   }
-
+  console.log(req.user);
   const newListing = new Listing({
     _id: uuidv4(),
     active: true,
@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
         amount: req.body.item.amount,
     },
     acceptedAccTypes: req.body.acceptedAccTypes,
-    userId: "test",
+    userId: req.user.id,
     description: req.body.description,
   })
 
