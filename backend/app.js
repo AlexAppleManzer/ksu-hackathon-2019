@@ -6,6 +6,7 @@ const cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const passport = require('passport');
 
 const config = require('./config');
 const auth = require('./auth');
@@ -32,8 +33,11 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+auth(app);
+
+app.use(passport.authenticate('google-id-token', { session: false }))
 app.use('/', indexRouter);
-app.use('/users/*', usersRouter);
+app.use('/users', usersRouter);
 app.use('/accTypes', accTypesRouter);
 app.use('/listings', listingsRouter);
 app.use('/accounts', accountsRouter );

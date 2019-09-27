@@ -1,14 +1,14 @@
 <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        This is the expansion title
+        {{listing.item.accType}} ${{listing.item.amount}} -> {{listing.acceptedAccTypes}} ${{listing.item.amount}}
       </mat-panel-title>
       <mat-panel-description>
-        This is a summary of the content
+        {{listing.description}}
       </mat-panel-description>
     </mat-expansion-panel-header>
-  
-    <p>This is the primary content of the panel.</p>
-  
+   
+    <button mat-raised-button color="primary"> Make Offer </button>
+     
   </mat-expansion-panel>
   

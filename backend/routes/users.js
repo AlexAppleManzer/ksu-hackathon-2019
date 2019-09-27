@@ -13,27 +13,50 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/accounts', async (req,res) => {
-  const result = await http.post(endpoint,
+  console.log(req.body)
+  if(!req.body.type) {
+    res.status(400).send();
+    return;
+  }
+
+  let result = await http.post(endpoint,
     {
       headers: {'X-API-Key': apikey}
     }
   );
-  let user = await User.findById(res.user._id);
-  user.accounts.append(result.id);
-  console.log (user);
+
+  result = JSON.parse(result);
+
+  console.log(endpoint + 'updateOwner/' + result.id);
+  await http.put(`${endpoint}updateOwner/${result.id}`,
+    {
+      headers: {'X-API-Key': apikey},
+      body: {
+        owner: req.body.type
+      },
+      json: true
+    }
+  );
+
+  let user = await User.findById(req.user._id);
+  user.accounts.push(result.id);
   await user.save();
   res.status(204).json(result);
 });
 
 router.get('/accounts', async (req, res) => {
   async function getAccount(id) {
-    return await http.get(endpoint + id);
+    console.log(endpoint + id)
+    return await http.get(endpoint + id, 
+      {
+        headers: {'X-API-Key': apikey}
+      });
   }
 
-  let user = User.findById(res.user._id);
+  let user = await User.findById(req.user._id);
   let results = []
-  for(let account in user.accounts) {
-    results.push(await getAccount(account));
+  for(let account of user.accounts) {
+    results.push(JSON.parse(await getAccount(account)));
   }
 
   res.status(200).json(results);

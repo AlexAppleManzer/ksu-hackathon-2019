@@ -12,15 +12,22 @@ import { BackendServiceService } from 'src/app/services/backend-service.service'
 export class CreateListingComponent implements OnInit {
   options: string[] = [];
   filteredOptions: Observable<string[]>;
+  accounts: any[];
 
   listingForm = new FormGroup({
     description: new FormControl(''),
     accType: new FormControl(),
+    sell: new FormControl()
   });
 
   constructor(private backendService: BackendServiceService) { }
 
   ngOnInit() {
+
+    this.backendService.listAccounts().subscribe(
+      results => this.accounts = results
+    );
+
     this.backendService.getAccTypes().subscribe(
       results => this.options = results
     );
