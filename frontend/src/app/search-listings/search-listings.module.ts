@@ -16,19 +16,19 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SearchPageComponent],
+  declarations: [SearchPageComponent, ListingDetailComponent, CreateListingComponent],
   imports: [
-    RouterModule.forChild(routes),
     CommonModule,
-    MatAutocompleteModule,
+    MatExpansionModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule,
-    FormsModule,
-  //BrowserAnimationsModule
+    MatCardModule,
+    MatButtonModule,
+    MatAutocompleteModule
   ],
   exports: [
-    RouterModule
   ]
 })
 export class SearchListingsModule { }

@@ -39,7 +39,10 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   let query = await http.get(endpoint, {
-    headers: {'X-API-Key': apikey}
+    headers: {'X-API-Key': apikey},
+    params: {
+      
+    }
   });
   query = JSON.parse(query);
   if(!query) {
