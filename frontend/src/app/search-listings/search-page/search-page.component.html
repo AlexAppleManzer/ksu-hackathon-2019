@@ -6,8 +6,8 @@
         <input type="text" placeholder="What I am looking for" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" input #newHero
         (keyup.enter)="addHero(newHero.value)"
         (blur)="addHero(newHero.value); newHero.value='' ">
-        <ul><li *ngFor="let hero of heroes; let i = index"[attr.data-index]="i">{{hero}} 
-          <button mat-button (click)="removeHero(index)" > remove </button> 
+        <ul><li *ngFor="let hero of heroes; let i = index">{{hero}} 
+          <button type ="button" (click)="removeHero(index)" > remove </button> 
         </li></ul>
       
         
