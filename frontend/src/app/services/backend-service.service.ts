@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class BackendServiceService {
 
-  endpoint = 'localhost:3000'
+  endpoint = 'http://localhost:3000'
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +18,15 @@ export class BackendServiceService {
         data => console.log(listing, data),
         error => console.error(listing, error)
       )
-    ); 
+    );
+  }
+
+  getAccTypes() : Observable<any> {
+    return this.http.get(this.endpoint + '/accTypes').pipe(
+      tap( // Log the result or error
+        data => console.log(data),
+        error => console.error(error)
+      )
+    );
   }
 }
