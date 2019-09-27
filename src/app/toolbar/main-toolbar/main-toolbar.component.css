@@ -1,0 +1,8 @@
+.toolbar {
+    position: relative;
+
+    justify-content: space-between;
+    
+
+    background-color: rgb(1, 132, 255);
+  }
