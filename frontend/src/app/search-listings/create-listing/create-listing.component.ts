@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { BackendServiceService } from 'src/app/services/backend-service.service';
 
 @Component({
   selector: 'app-create-listing',
@@ -9,7 +10,7 @@ import { startWith, map } from 'rxjs/operators';
   styleUrls: ['./create-listing.component.css']
 })
 export class CreateListingComponent implements OnInit {
-  options: string[] = ['One', 'Two', 'Three'];
+  options: string[] = [];
   filteredOptions: Observable<string[]>;
 
   listingForm = new FormGroup({
@@ -17,9 +18,13 @@ export class CreateListingComponent implements OnInit {
     accType: new FormControl(),
   });
 
-  constructor() { }
+  constructor(private backendService: BackendServiceService) { }
 
   ngOnInit() {
+    this.backendService.getAccTypes().subscribe(
+      results => this.options = results
+    );
+
     this.filteredOptions = this.listingForm.get('accType').valueChanges
     .pipe(
       startWith(''),

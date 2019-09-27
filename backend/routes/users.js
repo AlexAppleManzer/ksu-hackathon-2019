@@ -30,9 +30,13 @@ router.get('/accounts', async (req, res) => {
     return await http.get(endpoint + id);
   }
 
-  
+  let user = User.findById(res.user._id);
+  let results = []
+  for(let account in user.accounts) {
+    results.push(await getAccount(account));
+  }
 
-  const result = await http.get(endpoint,)
+  res.status(200).json(results);
 });
 
 module.exports = router;
