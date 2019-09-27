@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { BackendServiceService } from 'src/app/services/backend-service.service';
+import { FormBuilder, FormGroup, FormArray, ValidatorFn } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-search-page',
@@ -13,10 +17,17 @@ import {map, startWith} from 'rxjs/operators';
 export class SearchPageComponent implements OnInit {
 
   myControl = new FormControl();
-  options: string[] = ['Steam', 'Itunes', 'Walmart'];
+   options: string[] = ["one", "two" , "three"]; 
+   
   filteredOptions: Observable<string[]>;
-
+  form: FormGroup;
+  constructor(private backendService: BackendServiceService) {
+    
+   }
   ngOnInit() {
+    this.backendService.getAccTypes().subscribe(
+      results => this.options = results
+    );
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
@@ -30,19 +41,10 @@ export class SearchPageComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
 
   }
-// testing enter 
-  heroes =[]; 
-  addHero(newHero:string){
-    if (newHero){
-      this.heroes.push(newHero)
-    }
+
+   
   }
 
-  have =[];
-  addHave(newHave:string){
-    if(newHave){
-      this.have.push(newHave)
-    }
-  }
 
-}
+
+  
