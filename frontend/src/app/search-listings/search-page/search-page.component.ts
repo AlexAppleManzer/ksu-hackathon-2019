@@ -35,7 +35,14 @@ export class SearchPageComponent implements OnInit {
   addHero(newHero:string){
     if (newHero){
       this.heroes.push(newHero)
+    
     }
+   
+  }
+
+  removeHero(index: number) {
+    this.heroes[index];
+    this.heroes.splice(index,1);
   }
 
   have =[];

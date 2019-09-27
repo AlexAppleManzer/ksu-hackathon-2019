@@ -6,18 +6,24 @@
         <input type="text" placeholder="What I am looking for" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" input #newHero
         (keyup.enter)="addHero(newHero.value)"
         (blur)="addHero(newHero.value); newHero.value='' ">
+        <ul><li *ngFor="let hero of heroes; let i = index"[attr.data-index]="i">{{hero}} 
+          <button mat-button (click)="removeHero(index)" > remove </button> 
+        </li></ul>
       
-       
-      
-        <ul><li *ngFor="let hero of heroes">{{hero}}</li></ul>
-       
+        
+
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
             {{option}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
+      
     </form>
+    
+      
+   
+  
     </div>
     
     <div class = "Have" > 
