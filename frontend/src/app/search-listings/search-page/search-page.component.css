@@ -1,0 +1,49 @@
+.tp-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+
+
+ }
+ .tp-full-width {
+    width: 100%;
+    color:pink;
+ }
+ .lookingFor{
+     padding: 10px;
+   background-color: black;
+   width:50%;
+   
+ }
+ .Have{
+    padding: 10px;
+  background-color: black;
+  width:50%;
+  
+}
+.containSearch{
+    display:flex;
+    color:violet;
+    
+}
+
+.displayWant{
+    padding: 5px;
+    background-color: black;
+    width:50%;
+    float: left;
+    color:white;
+}
+.displayHave{
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+.combine{
+    display: flex;
+    color:violet;
+    
+}
+button{
+    float: right;
+}

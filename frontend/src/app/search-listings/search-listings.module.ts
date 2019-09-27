@@ -1,10 +1,19 @@
+  
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { SearchPageComponent } from './search-page/search-page.component';
-import { ListingDetailComponent } from './listing-detail/listing-detail.component';
-import { MatExpansionModule, MatFormFieldModule, MatInputModule, MatCardModule, MatButtonModule, MatAutocompleteModule } from '@angular/material';
-import { CreateListingComponent } from './create-listing/create-listing.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatFormFieldModule, } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
+import {ReactiveFormsModule,FormsModule} from '@angular/forms';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
+const routes: Routes = [
+  { path: '', component: SearchPageComponent},
+];
 
 @NgModule({
   declarations: [SearchPageComponent, ListingDetailComponent, CreateListingComponent],
