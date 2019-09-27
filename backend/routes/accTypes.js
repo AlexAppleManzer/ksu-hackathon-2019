@@ -39,12 +39,10 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-  const query = await AccType.find().exec();
-  if(!query) {
-    res.status(500);
-    return;
-  }
-  return res.status(200).json(query);
+  const result = [
+    'ITunes', 'GooglePlay', 'Spotify', 'League of Legends', 'Fortnite', 'Visa', 'Bitcoin', 'AppleCoin', 'Pesos'
+  ];
+  return res.status(200).json(result);
 });
 
 module.exports = router;
