@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title>
+        Create New Listing
+    </mat-card-title>
+
+    <mat-card-content>
+        <form [formGroup]="listingForm" (ngSubmit)="onSubmit()">
+
+            <mat-form-field>
+                <mat-label>First Name:</mat-label>
+                <input matInput type="text" formControlName="description">
+            </mat-form-field>
+            
+            <!-- <mat-form-field>
+                <mat-label>Last Name:</mat-label>
+                <input matInput type="text" formControlName="lastName">
+            </mat-form-field> -->
+
+            <mat-form-field>
+                <input type="text" placeholder="Accepted Gift Card Types" aria-label="Number" matInput formControlName="accType" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <button mat-raised-button type="submit" [disabled]="!listingForm.valid">Submit</button>
+                
+        </form> 
+    </mat-card-content>
+</mat-card>

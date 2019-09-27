@@ -1,1 +1,53 @@
-<p>search-page works!</p>
+<div class ="containSearch" > 
+  
+    <div class = "lookingFor" > 
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="What I am looking for" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" input #newHero
+        (keyup.enter)="addHero(newHero.value)"
+        (blur)="addHero(newHero.value); newHero.value='' ">
+      
+       
+      
+        <ul><li *ngFor="let hero of heroes">{{hero}}</li></ul>
+       
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    </div>
+    
+    <div class = "Have" > 
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input type="text" placeholder="What I have " aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" input #newHave
+          (keyup.enter)="addHave(newHave.value)"
+          (blur)="addHave(newHave.value);newHave.value='' ">
+
+
+          <ul><li *ngFor="let Have of have">{{Have}}</li></ul>
+
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+      </div>
+    </div>
+    
+<div class = "Combine">
+    <div class ="displayWant" >
+        <p> this is what i want </p>
+    </div>
+
+    <div class = "displayHave" > 
+        <p> this is what i have </p>
+    </div>
+</div> 
+
+
