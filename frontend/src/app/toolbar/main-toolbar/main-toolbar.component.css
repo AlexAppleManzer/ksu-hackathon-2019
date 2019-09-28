@@ -1,8 +1,32 @@
-.toolbar {
+  .toolbar {
     position: relative;
 
+    display: flex;
     justify-content: space-between;
-    
 
-    background-color: rgb(1, 132, 255);
+    background-color: rgb(7, 0, 68);
   }
+
+
+  .logo {
+  position: relative;
+
+  }
+
+  .CreateButton {
+    right: 90%;
+
+  }
+
+  /* button {
+    top: 10px;
+    right: 250px;
+  } */
+
+  .NavButtons {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  
+    }

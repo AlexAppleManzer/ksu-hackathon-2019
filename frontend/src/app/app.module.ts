@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { getAuthServiceConfigs } from './configs';
 import { AuthServiceConfig } from 'angular-6-social-login';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { MatCardModule } from '@angular/material/card'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
     AppRoutingModule,
     ToolbarModule,
     SidebarModule,
-    SearchListingsModule
+    SearchListingsModule,
+    MatCardModule
   ],
   providers: [
     {
