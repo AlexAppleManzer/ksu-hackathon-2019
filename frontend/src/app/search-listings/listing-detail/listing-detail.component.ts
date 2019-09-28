@@ -13,4 +13,8 @@ export class ListingDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  formatNumber(num: number) {
+    return (num / 100.0).toFixed(2);
+  }
+
 }

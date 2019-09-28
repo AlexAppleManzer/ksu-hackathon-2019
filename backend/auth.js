@@ -33,7 +33,6 @@ function googleAuth(app) {
         });
       }
       user.save();
-      console.log(user);
       done(null, user);
     },
   ));

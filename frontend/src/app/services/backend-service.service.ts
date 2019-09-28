@@ -39,8 +39,8 @@ export class BackendServiceService {
     );
   }
 
-  postAccount() : Observable<any> {
-    return this.http.post(this.endpoint + '/users/accounts', {}).pipe(
+  postAccount(things: any) : Observable<any> {
+    return this.http.post(this.endpoint + '/users/accounts', things).pipe(
       tap( // Log the result or error
         data => console.log(data),
         error => console.error(error)

@@ -10,12 +10,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { getAuthServiceConfigs } from './configs';
 import { AuthServiceConfig } from 'angular-6-social-login';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
-import { MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
+import { AddCardComponent } from './account/add-card/add-card.component'
+import { MatOptionModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
+    AddCardComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -24,7 +28,14 @@ import { MatCardModule } from '@angular/material/card'
     ToolbarModule,
     SidebarModule,
     SearchListingsModule,
-    MatCardModule
+    MatCardModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [
     {

@@ -14,7 +14,7 @@
             <mat-form-field>
                 <mat-label>I am selling</mat-label>
                 <mat-select formControlName="itemId">
-                  <mat-option *ngFor = "let account of accounts" [value]="account.id">{{account.owner}} {{account.balance}}</mat-option>
+                  <mat-option *ngFor = "let account of accounts" [value]="account.id">{{account.owner}} ${{formatNumber(account.balance)}}</mat-option>
                 </mat-select>
             </mat-form-field>
 

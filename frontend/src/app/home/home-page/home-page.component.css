@@ -1,5 +1,5 @@
 .home-image {
-    height: 600px;
+    height: 800px;
     width: 100%;
     background-image: url("https://images.unsplash.com/photo-1528218245624-a800fa991289?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80");
     background-size: cover;
@@ -7,19 +7,9 @@
 }
 
 .welcome-text {
-
-    position: absolute;
-    top: 40%;
-    left: 10%;
     font-weight: 500;
     font-family: Avenir-HeavyOblique,sans-serif;
     font-size: 500%;
     color: white;
     text-align: center;
-    text-shadow:
-   -2px -2px 0 #000,  
-    2px -2px 0 #000,
-    -2px 2px 0 #000,
-     2px 2px 0 #000;
-
 }
