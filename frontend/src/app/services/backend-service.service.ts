@@ -21,6 +21,15 @@ export class BackendServiceService {
     );
   }
 
+  queryListings(queryParams: any) : Observable<any> {
+    return this.http.get(this.endpoint + '/listings', {params: queryParams}).pipe(
+      tap( // Log the result or error
+        data => console.log(data),
+        error => console.error(error)
+      )
+    );
+  }
+
   listAccounts() : Observable<any> {
     return this.http.get(this.endpoint + '/users/accounts').pipe(
       tap( // Log the result or error

@@ -13,13 +13,13 @@
 
             <mat-form-field>
                 <mat-label>I am selling</mat-label>
-                <mat-select>
+                <mat-select formControlName="itemId">
                   <mat-option *ngFor = "let account of accounts" [value]="account.id">{{account.owner}} {{account.balance}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
             <mat-form-field>
-                <input type="text" placeholder="Accepted Gift Card Types" aria-label="Number" matInput formControlName="accType" [matAutocomplete]="auto">
+                <input type="text" placeholder="Accepted Gift Card Types" aria-label="Number" matInput formControlName="acceptedAccTypes" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete">
                   <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                     {{option}}
@@ -27,10 +27,7 @@
                 </mat-autocomplete>
             </mat-form-field>
 
-            <button mat-raised-button type="submit" [disabled]="!listingForm.valid">Submit</button>
-                
+            <button mat-raised-button type="submit" [disabled]="!listingForm.valid">Submit</button>    
         </form> 
     </mat-card-content>
 </mat-card>
-
-{{accounts.length}}

@@ -11,9 +11,7 @@ const listingModel = new Schema({
     accType: { type: String },
     amount: { type: Number }
   },
-  acceptedAccTypes: [
-    { type: String }
-  ],
+  acceptedAccTypes: { type: String },
   userId: { type: String },
   description: { type: String },
 });

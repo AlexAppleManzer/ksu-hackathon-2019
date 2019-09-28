@@ -16,8 +16,8 @@ export class CreateListingComponent implements OnInit {
 
   listingForm = new FormGroup({
     description: new FormControl(''),
-    accType: new FormControl(),
-    sell: new FormControl()
+    acceptedAccTypes: new FormControl(),
+    itemId: new FormControl()
   });
 
   constructor(private backendService: BackendServiceService) { }
@@ -32,16 +32,21 @@ export class CreateListingComponent implements OnInit {
       results => this.options = results
     );
 
-    this.filteredOptions = this.listingForm.get('accType').valueChanges
+    this.filteredOptions = this.listingForm.get('acceptedAccTypes').valueChanges
     .pipe(
       startWith(''),
       map(value => this._filter(value))
     );
+    
   }
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.listingForm.value);
+
+    this.backendService.createListing(this.listingForm.value).subscribe(
+      results => console.log('success')
+    )
   }
 
   private _filter(value: string): string[] {
