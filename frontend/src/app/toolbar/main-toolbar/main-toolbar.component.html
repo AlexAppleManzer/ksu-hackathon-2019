@@ -2,16 +2,21 @@
     <div class="logo">Giftcard Trader</div>
 
     <div class="NavButtons">
-        <div class="Create-Button"><!--Center-->
-            <button mat-raised-button color= "primary">
+        <div class="Create-Button">
+            <!--Center-->
+            <button mat-raised-button color="primary" [routerLink]="['/listing/create']">
                 Create Listing!
             </button>
         </div>
-        <div class="Search-Button"><!--Right bound-->
-            <button mat-raised-button color="primary">
-                    Search Listing!
-                </button>
+        <div class="Search-Button">
+            <!--Right bound-->
+            <button mat-raised-button color="primary" [routerLink]="['/listing/search']">
+                Search Listing!
+            </button>
         </div>
     </div>
-    <div class="login"><app-google></app-google></div><!--login-->
+    <div class="login">
+        <app-google></app-google>
+    </div>
+    <!--login-->
 </mat-toolbar>
