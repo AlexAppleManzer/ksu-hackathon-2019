@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { BackendServiceService } from 'src/app/services/backend-service.service';
 import { FormBuilder, FormGroup, FormArray, ValidatorFn } from '@angular/forms';
 
@@ -11,40 +11,34 @@ import { FormBuilder, FormGroup, FormArray, ValidatorFn } from '@angular/forms';
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.css'],
-
-   
 })
 export class SearchPageComponent implements OnInit {
-
-  myControl = new FormControl();
-   options: string[] = ["one", "two" , "three"]; 
-   
+  options: string[] = ["one", "two", "three"];
+  results: any[];
   filteredOptions: Observable<string[]>;
-  form: FormGroup;
+  searchForm = new FormGroup({
+    acceptedAccTypes: new FormControl(),
+    accType: new FormControl()
+  });
+
   constructor(private backendService: BackendServiceService) {
-    
-   }
+  }
+
   ngOnInit() {
     this.backendService.getAccTypes().subscribe(
       results => this.options = results
     );
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+    this.onSubmit();
   }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-
-  }
-
    
+  onSubmit() {
+    console.warn(this.searchForm.value)
+    this.backendService.queryListings(this.searchForm.value).subscribe(
+      results => this.results = results,
+    )
   }
+}
 
 
 
-  
+

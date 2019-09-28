@@ -1,70 +1,29 @@
-<div class ="containSearch" > 
-  
-    <div class = "lookingFor" > 
-        <h4>What I am Looking for </h4>
-        <mat-form-field>
-          <mat-label>CardType</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let options of options" [value]="options">
-              {{options}}
-            </mat-option>
-            </mat-select>
-        </mat-form-field>
-    <!-- <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input type="text" placeholder="What I am looking for" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" input #newHero
-        (keyup.enter)="addHero(newHero.value)"
-        (blur)="addHero(newHero.value); newHero.value='' ">
-        <ul><li *ngFor="let hero of heroes">{{hero}} 
-          
-        </li></ul>
-      
-        
-
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+<mat-card *ngIf='options'>
+  <mat-card-content>
+    <form class="searchForm" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>What I have</mat-label>
+        <mat-select formControlName="acceptedAccTypes">
+          <mat-option *ngFor="let options of options" [value]="options">
+            {{options}}
           </mat-option>
-        </mat-autocomplete>
+        </mat-select>
       </mat-form-field>
-      
+      <mat-form-field>
+        <mat-label>What I Want</mat-label>
+        <mat-select formControlName="accType">
+          <mat-option *ngFor="let options of options " [value]="options">
+            {{options}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit">Search</button> 
     </form>
-     -->
-   
-  
-    </div>
-    
-    <div class = "Have" > 
-        <h4>What I Want </h4>
-        <mat-form-field>
-          <mat-label>CardType</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let options of options " [value]="options">
-              {{options}}
-            </mat-option>
-            </mat-select>
-        </mat-form-field>
-      <!-- <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <input type="text" placeholder="What I have " aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" input #newHave
-          (keyup.enter)="addHave(newHave.value)"
-          (blur)="addHave(newHave.value);newHave.value='' ">
+  </mat-card-content>
+</mat-card>
 
 
-          <ul><li *ngFor="let Have of have">{{Have}}</li></ul>
-
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-      </form>
-      </div> -->
-    </div>
-    
-
-
-
-
-
+<div *ngIf="results">
+  <app-listing-detail *ngFor="let result of results" [listing]="result"></app-listing-detail>
+</div>

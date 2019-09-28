@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.post('/accounts', async (req,res) => {
   console.log(req.body)
-  if(!req.body.type) {
+  if(!req.body.type || !req.body.balance) {
     res.status(400).send();
     return;
   }
@@ -33,6 +33,17 @@ router.post('/accounts', async (req,res) => {
       headers: {'X-API-Key': apikey},
       body: {
         owner: req.body.type
+      },
+      json: true
+    }
+  );
+
+  console.log(endpoint + 'updateBalance/' + result.id);
+  await http.put(`${endpoint}updateBalance/${result.id}`,
+    {
+      headers: {'X-API-Key': apikey},
+      body: {
+        balance: req.body.balance
       },
       json: true
     }
