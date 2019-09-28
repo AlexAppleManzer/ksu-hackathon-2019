@@ -55,7 +55,6 @@ router.post('/', async (req, res) => {
 
   acc = JSON.parse(acc);
 
-  console.log(acc);
   const newListing = new Listing({
     _id: uuidv4(),
     active: true,
@@ -74,12 +73,10 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-  console.log(req.query)
 
   let queryParams = {};
   if(req.query.accType !== 'null') {
-    queryParams.item = {};
-    queryParams.item.accType = req.query.accType;
+    queryParams['item.accType'] = req.query.accType;
   }
   if(req.query.acceptedAccTypes !== 'null') {
     queryParams.acceptedAccTypes = req.query.acceptedAccTypes;

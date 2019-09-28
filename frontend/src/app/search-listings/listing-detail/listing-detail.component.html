@@ -1,7 +1,7 @@
 <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{listing.item.accType}} {{listing.item.amount}} -> {{listing.acceptedAccTypes}}
+        {{listing.item.accType}} ${{formatNumber(listing.item.amount)}} -> {{listing.acceptedAccTypes}}
       </mat-panel-title>
       <mat-panel-description>
         {{listing.description}}

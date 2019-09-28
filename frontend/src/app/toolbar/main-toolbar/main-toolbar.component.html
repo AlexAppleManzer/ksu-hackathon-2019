@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbar">
-    <div class="logo">Giftcard Trader</div>
+    <div class="logo" [routerLink]="['']">Giftcard Exchange</div>
 
     <div class="NavButtons">
         <div class="Create-Button">
@@ -12,6 +12,12 @@
             <!--Right bound-->
             <button mat-raised-button color="primary" [routerLink]="['/listing/search']">
                 Search Listing!
+            </button>
+        </div>
+        <div class="Search-Button">
+            <!--Right bound-->
+            <button mat-raised-button color="primary" [routerLink]="['/account/create']">
+                Register Card!
             </button>
         </div>
     </div>
